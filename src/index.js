@@ -1,17 +1,42 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from 'react'
+import ReactDOM from 'react-dom'
+// import { createStore, combineReducers } from 'redux'
+import { Provider } from 'react-redux'
+import store from './store'
+import App from './App'
+// import { composeWithDevTools } from 'redux-devtools-extension'
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+// import noteReducer, { initializeNotes } from './reducers/noteReducer'
+// import filterReducer from './reducers/filterReducer'
+// import { createNote } from './reducers/noteReducer'
+// import { filterChange } from './reducers/filterReducer'
+// import noteService from './services/notes'
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+// const reducer = combineReducers({
+// 	notes: noteReducer,
+// 	filter: filterReducer
+// })
+// const store = createStore(
+// 	reducer,
+// 	composeWithDevTools()
+// )
+
+// noteService.getAll().then(notes =>
+// 	store.dispatch(initializeNotes(notes))
+// )
+
+
+const renderApp = () => {
+	ReactDOM.render(
+		<Provider store={store}>
+			<App />
+		</Provider>,
+		document.getElementById('root')
+	)
+}
+
+renderApp()
+// store.subscribe(renderApp)
+// store.subscribe(() => console.log(store.getState()))
+// store.dispatch(filterChange('IMPORTANT'))
+// store.dispatch(createNote('combineReducers forms one reducer from many simple reducers'))
